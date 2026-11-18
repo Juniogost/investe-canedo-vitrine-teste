@@ -140,14 +140,3 @@ body[data-layout="revista"] .f-note a{color:#8a6d1f}
 .pricelist li{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px dashed rgba(255,255,255,.07);font-size:13px}
 .pl-name{color:#ddd8ce;line-height:1.35}
 .pl-price{color:var(--gold-2);font-weight:700;white-space:nowrap}
-
-/* ===== visit scheduling ===== */
-.visit{margin:26px 20px 6px;padding:26px 22px;border:1px solid rgba(201,168,76,.35);border-radius:20px;
-  background:linear-gradient(135deg,rgba(201,168,76,.12),rgba(20,20,20,0) 60%)}
-.visit .block-title{margin:4px 0 8px}
-.visit-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
-.visit-btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;
-  font-weight:700;font-size:15px;text-decoration:none}
-.visit-wa{background:var(--gold);color:#141414}
-.visit-cal{border:1.5px solid var(--gold);color:var(--gold-2)}
-@media (max-width:640px){.visit-actions{flex-direction:column}.visit-btn{justify-content:center}}

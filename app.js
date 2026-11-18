@@ -64,18 +64,6 @@
       '</div>';
     app.appendChild(hero);
 
-    // Agendamento de visita (Google Agenda) + atendimento WhatsApp
-    var vis = document.createElement('section'); vis.className='visit'; vis.id='visita';
-    vis.innerHTML =
-      '<p class="block-tag">Atendimento</p>' +
-      '<h2 class="block-title">Fale com a gente ou agende sua visita</h2>' +
-      '<p class="block-desc">Atendimento imediato no WhatsApp ou visita agendada aos empreendimentos: escolha na agenda um dia e horário que estejam livres, de segunda a sexta, das 9h às 17h. Você recebe a confirmação por e-mail.</p>' +
-      '<div class="visit-actions">' +
-        '<a class="visit-btn visit-wa" href="'+D.wa_generic+'" target="_blank" rel="noopener">Atendimento no WhatsApp</a>' +
-        '<a class="visit-btn visit-cal" href="'+D.booking_url+'" target="_blank" rel="noopener">Agendar visita</a>' +
-      '</div>';
-    app.appendChild(vis);
-
     var rows = {};
     CAT_ORDER.forEach(function(c){
       rows[c] = D.props.filter(function(p){return p.cat===c;});
@@ -134,5 +122,17 @@
     });
     app.appendChild(sec);
   }
+
+  // Medição de cliques nos botões de WhatsApp (GA4)
+  document.addEventListener('click', function(ev){
+    var a = ev.target && ev.target.closest ? ev.target.closest('a[href*="wa.me"]') : null;
+    if(!a || typeof gtag !== 'function') return;
+    var botao = a.id || (a.className||'').toString().split(' ')[0] || 'link';
+    gtag('event', 'whatsapp_click', {
+      botao: botao,
+      link_url: a.href,
+      pagina: location.pathname
+    });
+  });
   render();
 })();
