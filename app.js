@@ -24,7 +24,7 @@
       '<div class="card-body">' +
         '<h3 class="card-name">'+p.name+'</h3>' +
         '<p class="card-loc">'+[p.bairro,p.cidade].filter(Boolean).join(' · ')+'</p>' +
-        '<p class="card-price">Valores sob consulta<small>atualizados direto no WhatsApp</small></p>' +
+        (p.price ? '<p class="card-price">'+(p.apartir?'a partir de ':'')+BRL(p.price)+'<small>Valores sujeitos a alteração. Confirme no WhatsApp</small></p>' : '<p class="card-price">Valores sob consulta<small>Confirme valores no WhatsApp</small></p>') +
         (meta.length? '<p class="card-meta">'+meta.join(' · ')+'</p>' : '') +
         '<a class="card-wa" href="'+p.wa+'" target="_blank" rel="noopener">Consultar no WhatsApp</a>' +
       '</div>';
