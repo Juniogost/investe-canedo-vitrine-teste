@@ -10,16 +10,17 @@
   document.getElementById('wa-footer').href = D.wa_generic;
   document.getElementById('wa-top').href = D.wa_generic;
 
-  var CAT_ORDER = ['lancamentos','apartamentos','casas','terrenos','chacaras'];
+  var CAT_ORDER = ['lancamentos','tenda','tcm','loteamentos','apartamentos','casas','terrenos','chacaras'];
 
   function propCard(p){
     var el = document.createElement('article'); el.className='card';
     var meta = [];
-    if(p.q) meta.push(p.q + (p.q===1?' quarto':' quartos'));
-    if(p.area) meta.push(Math.round(p.area) + ' m²');
+    if(p.meta) meta.push(p.meta);
+    else { if(p.q) meta.push(p.q + (p.q===1?' quarto':' quartos'));
+    if(p.area) meta.push(Math.round(p.area) + ' m²'); }
     el.innerHTML =
       '<div class="card-img"><img loading="lazy" src="'+p.img+'" alt="'+p.name.replace(/"/g,'')+'" onerror="this.parentNode.style.display=\'none\'">' +
-      (p.ebm ? '<span class="badge">Lançamento EBM</span>' : '') + '</div>' +
+      (p.ebm ? '<span class="badge">Lançamento EBM</span>' : (p.badge ? '<span class="badge">'+p.badge+'</span>' : '')) + '</div>' +
       '<div class="card-body">' +
         '<h3 class="card-name">'+p.name+'</h3>' +
         '<p class="card-loc">'+[p.bairro,p.cidade].filter(Boolean).join(' · ')+'</p>' +
@@ -54,7 +55,7 @@
       '<div class="hero-inner">' +
         '<p class="hero-kicker">Senador Canedo · Goiás</p>' +
         '<h1>Imóveis para investir e morar,<br>num só lugar.</h1>' +
-        '<p>Lançamentos EBM, apartamentos Tenda em Goiânia, casas, terrenos e o loteamento Reserva do Parque, com mapa interativo e maquete 3D. Toque em qualquer imóvel e fale direto no WhatsApp.</p>' +
+        '<p>Lançamentos EBM e Tenda, casas TCM, condomínios de lotes, terrenos e o loteamento Reserva do Parque, com mapa interativo e maquete 3D. Toque em qualquer imóvel e fale direto no WhatsApp.</p>' +
         '<a class="hero-cta" href="'+D.wa_generic+'" target="_blank" rel="noopener">Falar com a Investe Canedo</a>' +
         '<div class="hero-stats">' +
           '<span><b>'+D.props.length+'</b>imóveis na vitrine</span>' +
@@ -90,10 +91,13 @@
 
     addRow('Lançamentos','lancamentos');
     addBlock(D.sections[0]); // Reserva do Parque
+    addRow('Lançamentos','tenda');
+    addBlock(D.sections[1]); // Tenda 3D
+    addRow('Parceria','tcm');
+    addBlock(D.sections[2]); // Catálogo TCM
+    addRow('Parceria','loteamentos');
     addRow('Portal','apartamentos');
-    addBlock(D.sections[1]); // Tenda
     addRow('Portal','casas');
-    addBlock(D.sections[2]); // TCM
     addRow('Portal','terrenos');
     addRow('Portal','chacaras');
     addBlock(D.sections[3]); // Investe em Lotes
