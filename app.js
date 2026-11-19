@@ -23,7 +23,7 @@
       '<div class="card-body">' +
         '<h3 class="card-name">'+p.name+'</h3>' +
         '<p class="card-loc">'+[p.bairro,p.cidade].filter(Boolean).join(' · ')+'</p>' +
-        '<p class="card-price">'+BRL(p.price)+'<small>tabela vigente no portal</small></p>' +
+        '<p class="card-price">Valores sob consulta<small>atualizados direto no WhatsApp</small></p>' +
         (meta.length? '<p class="card-meta">'+meta.join(' · ')+'</p>' : '') +
         '<a class="card-wa" href="'+p.wa+'" target="_blank" rel="noopener">Consultar no WhatsApp</a>' +
       '</div>';
@@ -97,31 +97,8 @@
     addRow('Portal','terrenos');
     addRow('Portal','chacaras');
     addBlock(D.sections[3]); // Investe em Lotes
-    addPriceList();
   }
 
-  // Lista de preços para conferência (tabela vigente, em revisão por Junio)
-  function addPriceList(){
-    var sec = document.createElement('section'); sec.className='block pricelist';
-    sec.innerHTML = '<p class="block-tag">Conferência</p><h2 class="block-title">Lista de preços</h2>'+
-      '<p class="block-desc">Valores da tabela vigente publicada no portal, em conferência. Qualquer correção, fale no WhatsApp.</p>';
-    CAT_ORDER.forEach(function(c){
-      var list = D.props.filter(function(p){return p.cat===c;}).sort(function(a,b){return b.price-a.price;});
-      if(!list.length) return;
-      var det = document.createElement('details'); det.className='pl-cat';
-      var sum = document.createElement('summary');
-      sum.innerHTML = D.cats[c] + ' <span>'+list.length+'</span>';
-      det.appendChild(sum);
-      var ul = document.createElement('ul');
-      list.forEach(function(p){
-        var li = document.createElement('li');
-        li.innerHTML = '<span class="pl-name">'+p.name+'</span><span class="pl-price">'+BRL(p.price)+'</span>';
-        ul.appendChild(li);
-      });
-      det.appendChild(ul); sec.appendChild(det);
-    });
-    app.appendChild(sec);
-  }
 
   // Medição de cliques nos botões de WhatsApp (GA4)
   document.addEventListener('click', function(ev){
