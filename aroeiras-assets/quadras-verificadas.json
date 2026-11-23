@@ -8389,7 +8389,7 @@
       "rotation": 0
     }
   ],
-  "source": "https://drive.google.com/file/d/1wh-lKXb6wh0or0QMg4r76KTr00a_XLec/view?usp=drivesdk&authuser=papocerio%40gmail.com",
+  "source": "nb-assets/pranchas-canedo/PRANCHA_ORIGINAL_AROEIRAS.pdf",
   "excluded": [
     {
       "q": "7",
@@ -8427,5 +8427,7 @@
       "reason": "divergencia de area"
     }
   ],
-  "note": "Tabela novembro/2026, sem estoque ao vivo. Contornos extraídos da prancha, sem modelo volumétrico."
+  "note": "Tabela novembro/2026, sem estoque ao vivo. Contornos extraídos da prancha, sem modelo volumétrico.",
+  "source_original": "https://drive.google.com/file/d/1wh-lKXb6wh0or0QMg4r76KTr00a_XLec/view?usp=drivesdk&authuser=papocerio%40gmail.com",
+  "copied_without_modification": true
 }

@@ -1,0 +1,32 @@
+[
+  {
+    "sector": "jacarandas",
+    "file": "PRANCHA_ORIGINAL_JACARANDAS.pdf",
+    "original_url": "https://drive.google.com/file/d/179Mitbu4pA1z5vkY-VhnOmq7usvk89_u/view?usp=drivesdk&authuser=papocerio%40gmail.com",
+    "sha256": "cd60d19290ab6d64805d0879f5d19472808bd0c0f37148355272e1c9425a71ea",
+    "bytes": 1361809,
+    "pages": 2,
+    "plan_page": 1,
+    "copied_without_modification": true
+  },
+  {
+    "sector": "aroeiras",
+    "file": "PRANCHA_ORIGINAL_AROEIRAS.pdf",
+    "original_url": "https://drive.google.com/file/d/1wh-lKXb6wh0or0QMg4r76KTr00a_XLec/view?usp=drivesdk&authuser=papocerio%40gmail.com",
+    "sha256": "924045e68d9f369bff946cdc01a0973b3612ffc947bd64a83a00c2d81ad541d8",
+    "bytes": 8705653,
+    "pages": 48,
+    "plan_page": 34,
+    "copied_without_modification": true
+  },
+  {
+    "sector": "angicos",
+    "file": "PRANCHA_ORIGINAL_ANGICOS.pdf",
+    "original_url": "https://drive.google.com/file/d/11-V_012k0kCdqj8ozn_-WmEInG2mh3l8/view?usp=drivesdk&authuser=papocerio%40gmail.com",
+    "sha256": "d36ef4774c831e9b4e7e4f432cecb65f33080c20d911862898b353d27bc161a5",
+    "bytes": 7594786,
+    "pages": 40,
+    "plan_page": 25,
+    "copied_without_modification": true
+  }
+]

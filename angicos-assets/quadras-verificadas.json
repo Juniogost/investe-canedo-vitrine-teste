@@ -3921,7 +3921,9 @@
       "rotation": 0
     }
   ],
-  "source": "https://drive.google.com/file/d/11-V_012k0kCdqj8ozn_-WmEInG2mh3l8/view?usp=drivesdk&authuser=papocerio%40gmail.com",
+  "source": "nb-assets/pranchas-canedo/PRANCHA_ORIGINAL_ANGICOS.pdf",
   "excluded": [],
-  "note": "Tabela novembro/2026, sem estoque ao vivo. Contornos extraídos da prancha, sem modelo volumétrico."
+  "note": "Tabela novembro/2026, sem estoque ao vivo. Contornos extraídos da prancha, sem modelo volumétrico.",
+  "source_original": "https://drive.google.com/file/d/11-V_012k0kCdqj8ozn_-WmEInG2mh3l8/view?usp=drivesdk&authuser=papocerio%40gmail.com",
+  "copied_without_modification": true
 }
