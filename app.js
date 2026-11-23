@@ -3,7 +3,7 @@
   var BRL = function(v){ return 'R$ ' + Math.round(v).toLocaleString('pt-BR'); };
 
   // layout final escolhido por Junio: Netflix escuro
-  document.body.dataset.layout = 'netflix';
+  document.body.dataset.layout = 'claro';
 
   // generic WA links
   document.getElementById('wa-float').href = D.wa_generic;
@@ -24,7 +24,7 @@
       '<div class="card-body">' +
         '<h3 class="card-name">'+p.name+'</h3>' +
         '<p class="card-loc">'+[p.bairro,p.cidade].filter(Boolean).join(' · ')+'</p>' +
-        (p.price ? '<p class="card-price">'+(p.apartir?'a partir de ':'')+BRL(p.price)+'<small>Valores sujeitos a alteração. Confirme no WhatsApp</small></p>' : '<p class="card-price">Valores sob consulta<small>Confirme valores no WhatsApp</small></p>') +
+        '<p class="card-price">Valores sob consulta<small>Peça a tabela atual. Confirme no WhatsApp.</small></p>' +
         (meta.length? '<p class="card-meta">'+meta.join(' · ')+'</p>' : '') +
         '<a class="card-wa" href="'+p.wa+'" target="_blank" rel="noopener">Consultar no WhatsApp</a>' +
       '</div>';
@@ -47,24 +47,11 @@
     var app = document.getElementById('app');
     app.innerHTML = '';
 
-    // hero
-    var destaques = D.props.filter(function(p){return p.destaque;});
     var hero = document.createElement('section'); hero.className='hero';
-    hero.innerHTML =
-      '<img class="hero-bg" src="og-image.jpg" alt="">' +
-      '<div class="hero-inner">' +
-        '<p class="hero-kicker">Senador Canedo · Goiás</p>' +
-        '<h1>Imóveis para investir e morar,<br>num só lugar.</h1>' +
-        '<p>Lançamentos EBM e Tenda, casas TCM, condomínios de lotes, terrenos e o loteamento Reserva do Parque, com mapa interativo e maquete 3D. Toque em qualquer imóvel e fale direto no WhatsApp.</p>' +
-        '<a class="hero-cta" href="'+D.wa_generic+'" target="_blank" rel="noopener">Falar com a Investe Canedo</a>' +
-        '<div class="hero-stats">' +
-          '<span><b>'+D.props.length+'</b>imóveis na vitrine</span>' +
-          '<span><b>'+D.props.filter(function(p){return p.ebm;}).length+'</b>lançamentos EBM</span>' +
-          '<span><b>3</b>mapas e maquetes 3D</span>' +
-        '</div>' +
-      '</div>';
+    hero.innerHTML = '<div class="hero-inner"><p class="hero-kicker">INVESTE CANEDO · SENADOR CANEDO E REGIÃO</p><h1>Um lugar para viver.<br>Um novo projeto para começar.</h1><p>Seu próximo imóvel merece uma boa escolha. Conheça lançamentos, casas e lotes, compare o que faz sentido para você e fale direto com Junio.</p><div class="hero-actions"><a class="hero-cta" href="#imoveis">Explorar os imóveis ↓</a><a class="hero-secondary" href="'+D.wa_generic+'" target="_blank" rel="noopener">Conversar no WhatsApp ↗</a></div><p class="hero-note">Atendimento com Junio · CRECI-GO 47445</p></div><figure class="hero-visual"><img src="reserva-do-parque/assets/aerea-junio-2.jpg" alt="Vista aérea real de vias asfaltadas do Reserva do Parque em Senador Canedo"><figcaption>Reserva do Parque · registro real do empreendimento. Data da captura não informada.</figcaption></figure>';
     app.appendChild(hero);
-
+    var feature=document.createElement('section');feature.className='home-feature';feature.innerHTML='<div><p class="row-tag">EM DESTAQUE · RESERVA DO PARQUE</p><h2>Conheça o lugar antes de escolher o lote.</h2><p>Angicos, Aroeiras e Jacarandás: imagens reais, entorno e 5 opções por setor, com referências de pagamento da tabela de novembro/2026.</p><a class="hero-cta" href="reserva-do-parque/">Ver a apresentação ↗</a><p class="feature-note">Valores, condições e disponibilidade: confirme no WhatsApp.</p></div><img src="reserva-do-parque/assets/aerea-junio-3.jpg" alt="Avenida e vias internas do Reserva do Parque, com postes e quadras ao redor">';app.appendChild(feature);
+    var anchor=document.createElement('div');anchor.id='imoveis';app.appendChild(anchor);
     var rows = {};
     CAT_ORDER.forEach(function(c){
       rows[c] = D.props.filter(function(p){return p.cat===c;});
