@@ -66,11 +66,16 @@ function currentItem(){
 const observer='IntersectionObserver' in root?new IntersectionObserver(entries=>{entries.forEach(e=>candidates.set(e.target,e.intersectionRatio));},{threshold:[0,.25,.5,.75,1]}):null;
 data.props.forEach(p=>{
  const el=document.createElement('article');el.className='property';el.dataset.id=p.id;
+ const photo=root.IC_INTEREST_PHOTOS&&root.IC_INTEREST_PHOTOS[p.id];
+ const figure=document.createElement('figure');figure.className='property-media';
+ const placeholder=()=>{figure.replaceChildren();const note=document.createElement('div');note.className='photo-soon';note.textContent='Foto em breve';figure.appendChild(note);};
+ if(photo&&photo.accepted){const img=document.createElement('img');img.src=photo.file;img.alt='Imagem de divulgação de '+p.name;img.loading='lazy';img.width=1000;img.height=700;img.onerror=placeholder;figure.appendChild(img);const caption=document.createElement('figcaption');caption.textContent=photo.caption;figure.appendChild(caption);}else placeholder();
+ el.appendChild(figure);
  const h=document.createElement('h3');h.textContent=p.name;el.appendChild(h);
- const t=document.createElement('p');t.className='type';t.textContent='Tipologia: '+(LABEL[types[p.id].type]||'não validada, fora da sugestão');el.appendChild(t);
+ const knownType=types[p.id]&&LABEL[types[p.id].type];if(knownType){const t=document.createElement('p');t.className='type';t.textContent=knownType;el.appendChild(t);}
  const loc=document.createElement('p');loc.textContent=[p.bairro,p.cidade].filter(Boolean).join(' · ');el.appendChild(loc);
  const price=document.createElement('p');price.textContent=p.price?(p.apartir?'A partir de ':'')+Number(p.price).toLocaleString('pt-BR',{style:'currency',currency:'BRL'})+' · confirmar':'Valores sob consulta';el.appendChild(price);
- const id=document.createElement('small');id.textContent='ID: '+p.id;el.appendChild(id);
+
  const btn=document.createElement('button');btn.textContent='Tenho interesse neste imóvel';btn.onclick=()=>{meter.click(p.id);meter.activity(performance.now());update();$('copy-status').textContent='Consulta local registrada apenas se a medição estiver permitida. Nenhuma mensagem enviada.';};el.appendChild(btn);
  $('catalog').appendChild(el);if(observer)observer.observe(el);
 });
