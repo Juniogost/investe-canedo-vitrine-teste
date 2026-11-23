@@ -1,0 +1,11 @@
+const assert=require('node:assert/strict');
+const {createMeter}=require('./interesses-piloto.js');
+let m=createMeter();m.tick(1000,true,'a');assert.deepEqual(m.snapshot().seconds,{});
+m.allow(1000);m.tick(2000,true,'a');assert.equal(m.snapshot().seconds.a,1);
+m.tick(3000,false,'a');assert.equal(m.snapshot().seconds.a,1);
+m.tick(4000,true,null);assert.equal(m.snapshot().seconds.a,1);
+m.tick(32000,true,'a');assert.equal(m.snapshot().seconds.a,1);
+m.activity(33000);m.tick(34000,true,'b');assert.equal(m.snapshot().seconds.b,2);
+m.click('b');assert.equal(m.snapshot().clicks.b,1);m.reset();m.click('a');assert.deepEqual(m.snapshot().seconds,{});assert.deepEqual(m.snapshot().clicks,{});assert.equal(m.snapshot().allowed,false);
+global.window={};require('./data.js');require('./interesses-manifest.js');const props=window.IC_DATA.props;assert.equal(new Set(props.map(p=>p.id)).size,props.length);assert.equal(Object.keys(window.IC_INTEREST_TYPES).length,props.length);
+console.log('PASS: opt-in, timing, hidden, no visible item, inactivity, resume, clicks, withdraw, unique IDs, manifest coverage.');
